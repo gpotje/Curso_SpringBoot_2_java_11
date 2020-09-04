@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.gpotgames.curso.entities.Category;
+import com.gpotgames.curso.entities.OrdemItem;
 import com.gpotgames.curso.entities.Order;
 import com.gpotgames.curso.entities.Product;
 import com.gpotgames.curso.entities.User;
 import com.gpotgames.curso.entities.enums.OrderStatus;
 import com.gpotgames.curso.repositores.CategoryRepository;
+import com.gpotgames.curso.repositores.OrderItemRepository;
 import com.gpotgames.curso.repositores.OrderRepository;
 import com.gpotgames.curso.repositores.ProductRepository;
 import com.gpotgames.curso.repositores.UserRepository;
@@ -30,7 +32,8 @@ public class testConfig implements CommandLineRunner {
 	private CategoryRepository CategoryRepository;
 	@Autowired
 	private ProductRepository ProductRepository;
-	
+	@Autowired
+	private OrderItemRepository OrderItemRepository;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -72,6 +75,13 @@ public class testConfig implements CommandLineRunner {
  	
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 		
+		OrdemItem oi1 = new OrdemItem(o1, p1, 2, p1.getPrice());
+		OrdemItem oi2 = new OrdemItem(o1, p3, 1, p3.getPrice());
+		OrdemItem oi3 = new OrdemItem(o2, p3, 2, p3.getPrice());
+		OrdemItem oi4 = new OrdemItem(o3, p5, 2, p5.getPrice()); 
+		
+		
+		OrderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
 	}
 
