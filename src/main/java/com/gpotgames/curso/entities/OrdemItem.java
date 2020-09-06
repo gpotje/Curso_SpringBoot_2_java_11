@@ -67,6 +67,10 @@ public class OrdemItem implements Serializable {
 		this.price = price;
 	}
 
+	public Double getSubTotal() {
+		return price * qunatity;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
