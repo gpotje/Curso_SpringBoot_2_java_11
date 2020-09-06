@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.gpotgames.curso.entities.Category;
 import com.gpotgames.curso.entities.OrdemItem;
 import com.gpotgames.curso.entities.Order;
+import com.gpotgames.curso.entities.Payment;
 import com.gpotgames.curso.entities.Product;
 import com.gpotgames.curso.entities.User;
 import com.gpotgames.curso.entities.enums.OrderStatus;
@@ -83,6 +84,11 @@ public class testConfig implements CommandLineRunner {
 		
 		OrderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 		
+		
+		Payment pya1 =  new Payment(null,  Instant.parse("2019-06-20T21:53:07Z"),o1);
+		o1.setPayment(pya1);
+		
+		orderRepository.save(o1);
 	}
 
 	
